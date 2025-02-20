@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import "../styles/globals.css";
 import { cn } from "@/src/lib/utils";
+import ClientProviders from "../components/shared/client-providers";
 
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const fontTitle = Inter_Tight({ subsets: ["latin"], variable: "--font-title" });
@@ -20,7 +21,11 @@ export default function RootLayout({
       <body className={cn(
         "min-hg-screen bg-background font-sans antialiased",
         fontTitle.variable, fontSans.variable,
-      )}>{children}</body>
+      )}>
+        <ClientProviders>
+            {children}
+        </ClientProviders>
+        </body>
     </html>
   );
 }
